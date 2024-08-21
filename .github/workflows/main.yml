@@ -13,14 +13,15 @@ jobs:
     - name: Install Dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install verilator iverilog
+        sudo apt-get install -y verilator iverilog
 
+        # Install Slang Linter
+        sudo apt-get install -y clang
+        wget https://github.com/antmicro/slang/releases/download/v0.9.0/slang-0.9.0-linux-x86_64.tar.gz
+        tar -xzf slang-0.9.0-linux-x86_64.tar.gz
+        sudo mv slang-0.9.0-linux-x86_64/bin/slang-lint /usr/local/bin/
 
-
-    - name: Install Surelog and Slang
-      run: |
-        git clone https://github.com/chipsalliance/Surelog.git
-        git clone https://github.com/MikePopoloski/slang.git
-      # Build and install instructions here
-    - name: Lint SystemVerilog Files
+    - name: Lint Verilog Files with Slang
       run: slang-lint sources_1/bd/design_1/hdl/design_1_wrapper
+
+
