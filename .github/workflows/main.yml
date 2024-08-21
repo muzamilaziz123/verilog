@@ -17,10 +17,7 @@ jobs:
 
         # Install Slang Linter
         sudo apt-get install -y clang
-        wget https://github.com/antmicro/slang/releases/download/v0.9.0/slang-0.9.0-linux-x86_64.tar.gz
-        tar -xzf slang-0.9.0-linux-x86_64.tar.gz
-        sudo mv slang-0.9.0-linux-x86_64/bin/slang-lint /usr/local/bin/
-
+      
     - name: Lint Verilog Files with Slang
       run: slang-lint sources_1/bd/design_1/hdl/design_1_wrapper
 
