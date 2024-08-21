@@ -1,0 +1,26 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v2
+
+    - name: Install Dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install verilator iverilog
+
+
+
+    - name: Install Surelog and Slang
+      run: |
+        git clone https://github.com/chipsalliance/Surelog.git
+        git clone https://github.com/MikePopoloski/slang.git
+      # Build and install instructions here
+    - name: Lint SystemVerilog Files
+      run: slang-lint path/to/your/files/*.sv
