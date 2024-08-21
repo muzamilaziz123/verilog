@@ -23,4 +23,4 @@ jobs:
         git clone https://github.com/MikePopoloski/slang.git
       # Build and install instructions here
     - name: Lint SystemVerilog Files
-      run: slang-lint path/to/your/files/*.sv
+      run: slang-lint sources_1/bd/design_1/hdl/design_1_wrapper
